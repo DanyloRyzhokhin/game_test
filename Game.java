@@ -23,20 +23,34 @@ public class Game {
          while(run){
              for(int i =0; i<hidden.length();i++ ){
                  if(hidden.substring(i,i+1).equals(guess.substring(i,i+1))){
-                     hint+=hidden.substring(i,i+1);
+                     hint += hidden.substring(i,i+1);
                  }else{
-                     hint+="*";
-                 }
-             }
-             for(int i =0;i<hidden.length();i++){
-                 for(int j =0;j<hidden.length();j++){
-                     if(guess.substring(i,i+1).equals(hidden.substring(j,j+1))){
-                        hint = hint.substring(0,i)+"+"+hint.substring(i+1);
+                     boolean exist =false;
+                     for(int j=0;j<hidden.length();j++){
+
+                         if(guess.substring(i,i+1).equals(hidden.substring(j,j+1))){
+                             exist = true;
+                         }
+                     }
+                     if(exist){
+                         hint+="+";
+                     }else{
+                         hint+="*";
                      }
                  }
              }
-             run = false;
+             if(!hint.equals(hidden)){
+                 run = true;
+                 System.out.println("Hint for you: "+hint);
+                 System.out.println("Try again, enter here:");
+                 guess = keyb.next();
+                 hint ="";
+             }else{
+                 run = false;
+             }
+
          }
+         System.out.println("Congratulations you guess the hidden word");
          System.out.println(hint);
 
      }
