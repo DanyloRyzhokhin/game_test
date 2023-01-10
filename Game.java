@@ -25,14 +25,7 @@ public class Game {
                  if(hidden.substring(i,i+1).equals(guess.substring(i,i+1))){
                      hint += hidden.substring(i,i+1);
                  }else{
-                     boolean exist =false;
-                     for(int j=0;j<hidden.length();j++){
-
-                         if(guess.substring(i,i+1).equals(hidden.substring(j,j+1))){
-                             exist = true;
-                         }
-                     }
-                     if(exist){
+                     if(hidden.contains(guess.substring(i,i+1))){
                          hint+="+";
                      }else{
                          hint+="*";
@@ -48,20 +41,31 @@ public class Game {
              }else{
                  run = false;
              }
-
          }
          System.out.println("Congratulations you guess the hidden word");
          System.out.println(hint);
-
      }
-
-
 }
 
-/* for (int j = 0;j<hidden.length();j++){
+                /* for (int j = 0;j<hidden.length();j++){
                         if(guess.substring(i,i+1).equals(hidden.substring(j,j+1))){
                             hint +="+";
                         }else{
                             hint +="*";
                         }
                     }*/
+
+
+// метод нахождения составляющего числа
+    /*  boolean exist =false;
+                     for(int j=0;j<hidden.length();j++){
+        if(guess.substring(i,i+1).equals(hidden.substring(j,j+1))){
+        exist = true;
+        }
+        }
+        if(exist){
+        hint+="+";
+        }else{
+        hint+="*";
+        }
+    */
