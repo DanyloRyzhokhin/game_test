@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Game {
+public class Game extends TestingClass {
     private String hidden;
     private String guess;
     private String hint;
@@ -25,11 +25,7 @@ public class Game {
                  if(hidden.substring(i,i+1).equals(guess.substring(i,i+1))){
                      hint += hidden.substring(i,i+1);
                  }else{
-                     if(hidden.contains(guess.substring(i,i+1))){
-                         hint+="+";
-                     }else{
-                         hint+="*";
-                     }
+                     hint +=contain(hidden, guess, i);
                  }
              }
              if(!hint.equals(hidden)){
